@@ -28,8 +28,9 @@ class _HomePageState extends State<HomePage> {
     // List berisi widget container teks
     List<Widget> containers = [
       _buildGestureContainer(0, "Beranda", Colors.transparent),
-      _buildGestureContainer(1, "Gopay", Colors.transparent),
-      _buildGestureContainer(2, "Gojek", Colors.transparent),
+      _buildGestureContainer(1, "Promo", Colors.transparent),
+      _buildGestureContainer(2, "Pesanan", Colors.transparent),
+      _buildGestureContainer(3, "Chat", Colors.transparent),
     ];
 
     return Container(
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Text(
-          "$text - $index",
+          text,
           style: semibold14.copyWith(color: textColor),
         ),
       ),

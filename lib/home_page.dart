@@ -21,6 +21,30 @@ class _HomePageState extends State<HomePage> {
         toolbarHeight: 71,
         title: _buildCustomAppBar(),
       ),
+      body: Row(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width *
+                  0.8, // Sesuaikan lebar sesuai kebutuhan
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "Cari layanan atau toko",
+                  hintStyle: regular14.copyWith(color: dark3),
+                  prefixIcon: Icon(Icons.search, color: dark3),
+                  filled: true,
+                  fillColor: dark4,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(70),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -57,7 +81,7 @@ class _HomePageState extends State<HomePage> {
       child: _buildTextContainer(
         text: text,
         backgroundColor: (selectedIndex == index) ? green2 : initialBgColor,
-        textColor: (selectedIndex == index) ? Colors.white : Colors.black,
+        textColor: Colors.white,
         index: index,
       ),
     );

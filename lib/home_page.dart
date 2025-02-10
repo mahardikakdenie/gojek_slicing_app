@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'theme.dart'; // Pastikan import ini mengarah ke file yang benar.
 
 class HomePage extends StatefulWidget {
@@ -15,37 +16,89 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: green2,
-        elevation: 0,
-        toolbarHeight: 71,
-        title: _buildCustomAppBar(),
-      ),
-      body: Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width *
-                  0.8, // Sesuaikan lebar sesuai kebutuhan
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Cari layanan atau toko",
-                  hintStyle: regular14.copyWith(color: dark3),
-                  prefixIcon: Icon(Icons.search, color: dark3),
-                  filled: true,
-                  fillColor: dark4,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(70),
-                    borderSide: BorderSide.none,
-                  ),
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          backgroundColor: green2,
+          elevation: 0,
+          toolbarHeight: 71,
+          title: _buildCustomAppBar(),
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding:
+                    EdgeInsets.only(top: 23, left: 15, right: 15, bottom: 0),
+                child: Row(
+                  children: [
+                    Flexible(
+                      fit: FlexFit.tight,
+                      child: Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                            color: Color(0xFFFAFAFA),
+                            borderRadius: BorderRadius.circular(30),
+                            border: Border.all(color: const Color(0xFFE5E5E5))),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                              'assets/icons/search.svg',
+                              width: 20,
+                              height: 20,
+                              colorFilter:
+                                  ColorFilter.mode(dark3, BlendMode.srcIn),
+                            ),
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Text(
+                              "Cari Layanan, Makanan, dan Tujuan",
+                              style: regular14.copyWith(color: dark3),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    SizedBox(
+                      height: 35,
+                      width: 35,
+                      child: Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(35 / 2),
+                            ),
+                            clipBehavior: Clip.hardEdge,
+                            child: Image.asset("assets/images/avatar.png"),
+                          ),
+                          Positioned(
+                              right: 0,
+                              bottom: 0,
+                              width: 16,
+                              height: 16,
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(35 / 2),
+                                    color: const Color(0xFFD1E7EE)),
+                                child: SvgPicture.asset(
+                                  'assets/icons/goclub.svg',
+                                  colorFilter:
+                                      ColorFilter.mode(blue2, BlendMode.srcIn),
+                                ),
+                              ))
+                        ],
+                      ),
+                    )
+                  ],
                 ),
               ),
-            ),
+            ],
           ),
-        ],
-      ),
-    );
+        ));
   }
 
   Widget _buildCustomAppBar() {
